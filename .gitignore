@@ -2,8 +2,12 @@
 **/*.png
 **/*~
 **/*swp
+**/.DS_Store
 
 *.mat
 *.png
 *~
 *swp
+.DS_Store
+Pilot-MB-001/*
+Pilot-BR-002-Take-2/*
