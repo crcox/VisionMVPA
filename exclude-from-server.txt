@@ -1,0 +1,4 @@
+From\ Scanner/*
+Dicoms/*
+Raw_Dimon/*
+mrSESSION_backup.mat
