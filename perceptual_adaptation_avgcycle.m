@@ -1,12 +1,12 @@
 % basic setup
 % cd /Volumes/LKCLAB/MRI/Motion3D/Adaptation
 % cd /Volumes/LKCLAB/MRI/Raw
-cd /Volumes/Vision/MRI/PerceptualAdaptation
-addpath('/Volumes/Vision/MRI/PerceptualAdaptation/Analysis');
+cd /home/chris/VisionMVPA
+addpath('/home/chris/VisionMVPA');
 
 % cd Y:\MRI\Raw
 close all
-clear all
+% clear all
 
 % analysis params
 normFlag = 0;
@@ -20,7 +20,7 @@ phWindow = [0 2*pi];%pi/2]; %phase window - can go from 0-2pi % gets used in lin
 % s = {'060208a','060208b','060208c',... % DRDS wedges and anti-correlated
 %     '061008a','061008b','061008c',... % DRDS wedges and spatial scramble
 %     '061308a','061308b','061308c'}; % DRDS wedges and temporal scramble
-s = {'141104a'}; %{'121108b'}; %s = {'121108a'};
+s = {'Pilot-BR-002-Take-2'}; %{'121108b'}; %s = {'121108a'};
 
 
 % sub-index in to do single-subject analyses
@@ -39,7 +39,7 @@ rois = {'V1'}; %{'MT+'};
 
 
 fName = ['perceptualadaptation_' s{1} '_' num2str(cothresh*100) '_' rois{1}];
-datadir = '/Volumes/Vision/MRI/PerceptualAdaptation/';
+datadir = '/home/chris/VisionMVPA';
 
 ok = 1; % error-checking flag
 for k=1 %:4 % Number of conditions
@@ -157,7 +157,10 @@ end
 disp('Built timeseries')
 
 %% save out results
-outDir = '/Volumes/Vision/MRI/PerceptualAdaptation/Outputs';
+outDir = '/home/chris/VisionMVPA/Outputs';
+if ~exist(outDir,7)
+    mkdirp(outDir);
+end
 save(fullfile(outDir,fName)); % save the whole damn workspace!
 
 %% load results
@@ -170,7 +173,10 @@ load(fullfile(outDir,fName));
 
 %% plot results (Baseline subtraction)
 
-figDir = '/Volumes/Vision/MRI/PerceptualAdaptation/Figures';
+figDir = '/home/chris/VisionMVPA/Figures';
+if ~exist(figDir,7)
+    mkdirp(figDir);
+end
 close all;
 
 if nConds > 2
@@ -219,7 +225,6 @@ if nConds > 2
 end
 
 %% plot results (No baseline subtraction)
-figDir = '/Volumes/Vision/MRI/PerceptualAdaptation/Figures';
 % close all;
 LineWidth = 1.5; %1.5;
 MarkerSize = 8; %8; %10;
@@ -273,7 +278,6 @@ saveas(gcf,fullfile(figDir,['perceptualadaptation_',s{1},'_',num2str(cothresh*10
 
 
 %% plot results (No baseline subtraction - all scans separately)
-figDir = '/Volumes/Vision/MRI/PerceptualAdaptation/Figures';
 % close all;
 LineWidth = 1.5; %1.5;
 MarkerSize = 8; %8; %10;
