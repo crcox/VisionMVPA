@@ -11,3 +11,5 @@
 .DS_Store
 Pilot-MB-001/*
 Pilot-BR-002-Take-2/*
+Pilot-BR-002-Take-3/*
+!Pilot-BR-002-Take-3/setup.m
