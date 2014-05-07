@@ -39,7 +39,13 @@ setpref('VISTA','verbose',0)
 % Run all the things.
 mrInit(opts);
 
+% For some reason, this does not seem to be run properly by mrInit. So,
+% we'll tell it a second time. Don't make me say it a third time, Mr.
+% Vista.
+INPLANE{1} = computeCorAnal(INPLANE{1}, opts.applyCorAnal, 1);
+
+
 % Turn on waitbars.
 setpref('VISTA','verbose',1)
 
-setVAnatomyPath(mrSESSION.vAnatomy)
+setVAnatomyPath(opts.vAnatomy)
